@@ -1,19 +1,28 @@
 export default new class Routes {
-  get WelcomeScreen () {
+  get TopicsScreen () {
     return {
-      title: 'Home',
+      title: '话题列表',
       showTabBar: true,
       hideBackButton: true,
-      component: require('../containers/welcome_screen').default,
+      component: require('../containers/topics_screen').default,
       store: {
-        counterStore: require('../stores/counter_store').default,
+        topicsStore: require('../stores/topics_store').default,
       }
     }
   }
 
+  get TopicScreen () {
+    return {
+      title: '话题',
+      component: require('../containers/topic_screen').default,
+      store: {
+        topicStore: require('../stores/topic_store').default,
+      }
+    }
+  }
   get CheckinScreen () {
     return {
-      title: 'Checkin',
+      title: 'Wiki',
       showTabBar: true,
       hideBackButton: true,
       component: require('../containers/checkin_screen').default,
@@ -49,9 +58,6 @@ export default new class Routes {
     return {
       title: 'Counter Screen',
       component: require('../containers/counter_screen').default,
-      store: {
-        counterStore: require('../stores/counter_store').default,
-      }
     }
   }
 }

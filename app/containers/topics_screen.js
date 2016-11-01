@@ -3,32 +3,32 @@ import { Text, View, Image, StyleSheet, ScrollView } from 'react-native'
 import Button from 'react-native-button'
 import Routes from '../navigation/routes'
 import { observer } from 'mobx-react/native'
-import Icon from 'react-native-vector-icons/FontAwesome'
 import ApplicationStyles from '../styles'
 import {Format} from '../Format';
 
 @observer
 export default class WeclomeScreen extends Component {
   static propTypes = {
-    counterStore: PropTypes.object.isRequired,
+    topicsStore: PropTypes.object.isRequired,
     navigator: PropTypes.object.isRequired
   }
   constructor(props) {
     super(props);
-    this.props.counterStore.getFromRemote()
+    this.props.topicsStore.getTopics();
   }
-
   render() {
-    let length = this.props.counterStore.topics.length;
-    let media = this.props.counterStore.topics.map(function(topic) {
+    let length = this.props.topicsStore.topics.length;
+    let media = this.props.topicsStore.topics.map((topic)=> {
       return (
         <View key={topic.id}>
           <View style={styles.cententLi}>
             <Image source={{uri: topic.user.avatar_url}} style={styles.cententImg} />
             <View style={styles.rightCentent}>
-              <Text style={styles.cententTitle}>{topic.title}</Text>
-              <View style={styles.infos}>
-                <Text style={styles.cententCentent}>
+              <Button style={ApplicationStyles.button} onPress={ ()=> this.props.navigator.push(Routes.TopicScreen) }>
+                <Text style={styles.cententTitle}>{topic.title}</Text>
+              </Button>
+              <View>
+                <Text style={styles.infos}>
                   {topic.node_name} • {topic.user.name} • 发布于 {Format.date(topic.created_at)}
                 </Text>
               </View>
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
   wrap: {
     flex:1,
     flexDirection:'column',
-    paddingTop: 5,
   },
   cententWrap: {
     flex:1,
@@ -67,7 +66,6 @@ const styles = StyleSheet.create({
   centent: {
     flex:1,
     flexDirection:'column',
-    borderBottomWidth:1,
   },
   cententLi: {
     flexDirection: 'row',
@@ -75,13 +73,14 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   cententImg: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    top: 5,
   },
   cententTitle: {
-    fontSize: 15,
-    color: '#222',
+    fontSize: 13,
+    color: '#000',
     marginBottom: 3,
   },
   cententCentent: {
@@ -89,9 +88,9 @@ const styles = StyleSheet.create({
   },
   rightCentent: {
     flex: 1,
-    paddingLeft: 5,
+    paddingLeft: 8,
     paddingTop: 5,
-    paddingRight: 5,
+    paddingRight: 8,
     paddingBottom: 5,
   },
   cententType: {
@@ -113,18 +112,13 @@ const styles = StyleSheet.create({
     marginBottom: 7,
   },
   badge: {
-    minWidth: 10,
-    top: 20,
-    paddingTop: 15,
-    paddingBottom: 3,
-    paddingLeft: 7,
-    paddingRight: 7,
+    fontSize: 10,
+    top: 5,
+    color: '#222',
+  },
+  infos: {
+    paddingTop: 5,
+    color: '#737372',
     fontSize: 12,
-    fontWeight: '700',
-    lineHeight: 1,
-    color: '#fff',
-    textAlign: 'center',
-    backgroundColor: '#777',
-    borderRadius: 10,
   },
 });

@@ -7,7 +7,7 @@ export default class Root extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={Routes.WelcomeScreen}
+        initialRoute={Routes.TopicsScreen}
         renderScene={Router.renderScene}
       />
     );

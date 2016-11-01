@@ -8,11 +8,6 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 @observer
 export default class CounterScreen extends Component {
 
-  static propTypes = {
-    counterStore: PropTypes.object.isRequired,
-    navigator: PropTypes.object.isRequired,
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -20,16 +15,6 @@ export default class CounterScreen extends Component {
         <Text style={styles.text}>
           Counter Container Test
         </Text>
-        <Text style={styles.text}>Clicked: <Text style={styles.textRed}>{this.props.counterStore.counter}</Text> times</Text>
-        <Button style={ApplicationStyles.button} onPress={() => this.props.counterStore.increment()}>
-          |   +1   |
-        </Button>
-        <Button style={ApplicationStyles.button} onPress={() => this.props.counterStore.incrementAsync()}>
-          |   +1 async  |
-        </Button>
-        <Button onPress={ ()=> this.props.navigator.pop() }>
-          Back
-        </Button>
       </View>
     )
   }

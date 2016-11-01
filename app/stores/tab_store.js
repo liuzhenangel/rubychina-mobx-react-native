@@ -1,7 +1,7 @@
 import {observable} from 'mobx'
 
 class TabStore {
-  @observable selected = 'welcome';
+  @observable selected = 'topics';
 }
 
 const tabStore = new TabStore;

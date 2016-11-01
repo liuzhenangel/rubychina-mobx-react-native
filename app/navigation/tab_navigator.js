@@ -16,11 +16,11 @@ export default class TabNavigator extends Component {
   selectTab(which) {
     this.props.tabStore.selected = which;
     switch(which) {
-      case 'welcome':
-        this.props.navigator.resetTo(Routes.WelcomeScreen);
+      case 'topics':
+        this.props.navigator.resetTo(Routes.TopicsScreen);
         break;
-      case 'checkin':
-        this.props.navigator.resetTo(Routes.CheckinScreen);
+      case 'wiki':
+        this.props.navigator.resetTo(Routes.TaskScreen);
         break;
       case 'task':
         this.props.navigator.resetTo(Routes.TaskScreen);
@@ -35,17 +35,17 @@ export default class TabNavigator extends Component {
     return (
       <STabNavigator>
         <STabNavigator.Item
-          selected={this.props.tabStore.selected === 'welcome'}
+          selected={this.props.tabStore.selected === 'topics'}
           title="话题"
           renderIcon={() => <Image source={require('../images/home.png')} style={{width: 24, height: 24}}/>}
-          onPress={() => this.selectTab('welcome')}>
+          onPress={() => this.selectTab('topics')}>
           {this.props.view}
         </STabNavigator.Item>
         <STabNavigator.Item
-          selected={this.props.tabStore.selected === 'checkin'}
+          selected={this.props.tabStore.selected === 'wiki'}
           title="知识库"
           renderIcon={() => <Image source={require('../images/checkin.png')} style={{width: 24, height: 24}}/>}
-          onPress={() => this.selectTab('checkin')}>
+          onPress={() => this.selectTab('wiki')}>
           {this.props.view}
         </STabNavigator.Item>
         <STabNavigator.Item

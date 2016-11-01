@@ -1,28 +1,13 @@
 import {observable} from 'mobx'
 import api from './api'
 
-class CounterStore {
-  @observable counter = 0;
+class TopicsStore {
   @observable topics = [];
 
   constructor() {
   }
 
-  increment() {
-    this.counter++;
-  }
-
-  decrement() {
-    this.counter--;
-  }
-
-  incrementAsync() {
-    setTimeout(() => {
-      this.counter++;
-      }, 500);
-  }
-
-  getFromRemote() {
+  getTopics() {
     api.get('/topics')
       .then( (r)=> {
         if (r.ok) {
@@ -35,6 +20,6 @@ class CounterStore {
   }
 }
 
-const counterStore = new CounterStore;
+const topicsStore = new TopicsStore;
 
-export default counterStore;
+export default topicsStore;

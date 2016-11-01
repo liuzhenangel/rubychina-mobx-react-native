@@ -23,9 +23,10 @@ After finish install dependencies.
 Then lauch it
 
 1. `$ git clone git@github.com:liuzhenangel/rubychina-mobx-react-native.git && cd rubychina-mobx-react-native`
-2. `$ npm install`
-3. `$ react-native upgrade`
-4. `$ rnpm link`
+2. `$ git remote rm origin`
+3. `$ npm install`
+4. `$ react-native upgrade`
+5. `$ rnpm link`
 6. `$ react-native run-ios` or `react-native run-android`
 
 Done.
