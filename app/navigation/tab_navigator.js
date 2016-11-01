@@ -36,28 +36,28 @@ export default class TabNavigator extends Component {
       <STabNavigator>
         <STabNavigator.Item
           selected={this.props.tabStore.selected === 'welcome'}
-          title="Home"
+          title="话题"
           renderIcon={() => <Image source={require('../images/home.png')} style={{width: 24, height: 24}}/>}
           onPress={() => this.selectTab('welcome')}>
           {this.props.view}
         </STabNavigator.Item>
         <STabNavigator.Item
           selected={this.props.tabStore.selected === 'checkin'}
-          title="Checkin"
+          title="知识库"
           renderIcon={() => <Image source={require('../images/checkin.png')} style={{width: 24, height: 24}}/>}
           onPress={() => this.selectTab('checkin')}>
           {this.props.view}
         </STabNavigator.Item>
         <STabNavigator.Item
           selected={this.props.tabStore.selected === 'task'}
-          title="Task"
+          title="收藏"
           renderIcon={() => <Image source={require('../images/task.png')} style={{width: 24, height: 24}}/>}
           onPress={() => this.selectTab('task')}>
           {this.props.view}
         </STabNavigator.Item>
         <STabNavigator.Item
           selected={this.props.tabStore.selected === 'profile'}
-          title="Profile"
+          title="通知"
           renderIcon={() => <Image source={require('../images/profile.png')} style={{width: 24, height: 24}}/>}
           onPress={() => this.selectTab('profile')}>
           {this.props.view}

@@ -3,7 +3,7 @@ import api from './api'
 
 class CounterStore {
   @observable counter = 0;
-  @observable remoteCounter = 0;
+  @observable topics = [];
 
   constructor() {
   }
@@ -23,13 +23,15 @@ class CounterStore {
   }
 
   getFromRemote() {
-    api.get('/hello')
+    api.get('/topics')
       .then( (r)=> {
-        if(r.ok)
-          this.remoteCounter = r.data;
-        else
-          this.remoteCounter = 'error';
-      });
+        if (r.ok) {
+          this.topics = r.data.topics;
+        }else{
+          console.log(r);
+        }
+      })
+      .then( console.log )
   }
 }
 

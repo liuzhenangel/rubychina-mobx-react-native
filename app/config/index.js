@@ -1,4 +1,4 @@
 export default {
   // required: API base url
-  apiBaseURL: 'http://localhost:4567',
+  apiBaseURL: 'https://ruby-china.org/api/v3',
 }
