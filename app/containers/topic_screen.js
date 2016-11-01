@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { observer } from 'mobx-react/native'
 import { Text, View, Image, StyleSheet, ScrollView } from 'react-native'
+import HTMLView from 'react-native-htmlview'
 import Button from 'react-native-button'
+import MarkdownStyles from '../styles/markdown'
 import {Format} from '../Format';
 
 @observer
@@ -13,6 +15,7 @@ export default class TopicScreen extends Component {
   constructor(props) {
     super(props);
     this.props.topicStore.getTopic()
+    this.props.topicStore.getReplies()
   }
   render() {
     return (
@@ -36,7 +39,13 @@ export default class TopicScreen extends Component {
               <View style={styles.line}></View>
             </View>
           }
-          <ScrollView style={styles.replies}>
+          <ScrollView>
+            <View style={styles.centent}>
+              <HTMLView value={this.props.topicStore.currcentTopic.body_html} stylesheet={MarkdownStyles} />
+            </View>
+            <View style={styles.replies}>
+
+            </View>
           </ScrollView>
         </View>
       </View>
